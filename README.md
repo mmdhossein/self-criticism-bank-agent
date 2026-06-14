@@ -118,41 +118,6 @@ User Message
 - **Server:** FastAPI + Uvicorn
 - **Monitoring:** Structured JSON logging
 
----
-
-## Project Structure
-
-```
-banking-chatbot/
-├── app/
-│   ├── main.py                # FastAPI entrypoint
-│   ├── graph.py               # LangGraph graph definition
-│   ├── state.py               # BankState TypedDict
-│   ├── nodes/
-│   │   ├── pii_redactor.py
-│   │   ├── intent_detector.py
-│   │   ├── fraud_scorer.py
-│   │   ├── fetch_extra_info.py
-│   │   ├── planner.py
-│   │   ├── responder.py
-│   │   ├── sentiment_escalator.py
-│   │   ├── latency_guard.py
-│   │   ├── critic.py
-│   │   ├── human_handoff.py
-│   │   └── finalize.py
-│   ├── routers/
-│   │   └── edges.py           # Conditional edge functions
-│   ├── memory/
-│   │   └── mongo_store.py     # MongoDB multi-turn memory
-│   └── rag/
-│       ├── ingest.py          # Document ingestion pipeline
-│       └── retriever.py       # ChromaDB similarity search
-├── docs/                      # Source documents for RAG
-├── chroma_db/                 # Persisted vector store (auto-created)
-├── .env                       # Environment variables
-├── requirements.txt
-└── README.md
-```
 
 
 ## Installation
