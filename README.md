@@ -4,7 +4,7 @@ A production-grade, agentic banking assistant built with **LangGraph**, featurin
 fraud detection, sentiment escalation, RAG-powered knowledge retrieval,
 multi-turn persistent memory, and automated quality control loops.
 
-![Banner](image/Banking_Agent_System_Architecture.png)
+![diagram](image/Banking_Agent_System_Architecture.png)
 
 
 ---
