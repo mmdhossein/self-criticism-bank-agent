@@ -101,3 +101,13 @@ feedback: All checks passed."""
         f"decision={decision} feedback={feedback[:120]}"
     )
     return state
+
+
+# ── Critic loop ───────────────────────────────────────────────
+def critic_route(state: BankState):
+    return "improve" if state["decision"] == "revise" else "finalize"
+def route_after_critic(state: BankState) -> str:
+    if state.get("critic_iterations", 0) >= 3 or state.get("quality_ok", False):
+        return "finalize"
+    state["critic_iterations"] = state.get("critic_iterations", 0) + 1
+    return "improve"

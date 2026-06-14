@@ -1,5 +1,5 @@
 # ─── Cell 14: Tests ───────────────────────────────────────────
-from runner import ask_bank_agent
+from run.runner import ask_bank_agent
 
 # Test 1 — Fraud report (critical risk, requires auth)
 ask_bank_agent("دیشب یه تراکنش ۵ میلیونی رو حسابم هست که من انجام ندادم")

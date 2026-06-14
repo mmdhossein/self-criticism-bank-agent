@@ -18,3 +18,14 @@ class BankState(TypedDict):
     critic_count: int           # Safety counter — max 3 critique loops
     final_answer: str           # Final compliant answer (Persian)
     audit_log: str              # Append-only node execution trail
+    fraud_score: int            # 0–100
+    fraud_flags: list[str]
+    sentiment: str          # positive | neutral | negative | distressed
+    sentiment_score: float  # -1.0 to 1.0
+    session_id: str
+    conversation_history: list[dict]   # last 10 turns
+    start_time: float
+    elapsed_ms: float
+    handoff_reason: str     # "fraud" | "distressed" | "timeout" | "critical_risk"
+
+

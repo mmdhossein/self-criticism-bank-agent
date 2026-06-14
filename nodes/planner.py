@@ -3,6 +3,10 @@ from states.state import BankState
 from models.llms import llm_primary
 
 def planner(state: BankState) -> BankState:
+    history_text = "\n".join([
+    f"User: {t['user']}\nBot: {t['bot']}" 
+    for t in state.get("conversation_history", [])
+    ])
     """
     Node 5 — Planner
     Creates a numbered, compliance-aware response plan.
@@ -22,6 +26,8 @@ def planner(state: BankState) -> BankState:
     )
 
     prompt = """You are a SENIOR COMPLIANCE OFFICER and customer support specialist at an Iranian bank.
+
+    Previous conversation:\n{history_text}\n\nNow handle the current request.
 
 Create a numbered step-by-step response plan. This plan will be used by an agent to write a customer reply.
 
@@ -78,6 +84,7 @@ Plan:
 
 Create the plan for the current user case:"""
 
+
     state["plan"] = llm_primary.invoke(
         prompt.format(
             auth_instruction=auth_instruction,
@@ -85,7 +92,8 @@ Create the plan for the current user case:"""
             category=state["category"],
             risk=state["risk"],
             requires_auth=state["requires_auth"],
-            extra=extra
+            extra=extra,
+            history_text=history_text
         )
     ).content.strip()
 

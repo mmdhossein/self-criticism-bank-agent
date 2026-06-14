@@ -1,8 +1,11 @@
 # ─── Cell 13: Runner ──────────────────────────────────────────
 from states.state import BankState
 from graph.graph_assembly import app
+from db.memory import save_turn, load_history
+import time
 
-def ask_bank_agent(message: str) -> dict:
+
+def ask_bank_agent(message: str, session_id: str = "default") -> dict:
     """Invoke the bank chatbot and print a formatted result."""
     initial_state: BankState = {
         "message":           message,
@@ -22,6 +25,7 @@ def ask_bank_agent(message: str) -> dict:
         "final_answer":      "",
         "audit_log":         "[session_start]",
     }
+    initial_state["start_time"] = time.perf_counter()
 
     result = app.invoke(initial_state)
 
@@ -41,4 +45,13 @@ def ask_bank_agent(message: str) -> dict:
     print("=" * 70)
     print(f"\n  Audit log:\n{result['audit_log']}")
     print("=" * 70)
-    return result
+
+    save_turn(session_id, message, result["final_answer"], {
+        "intent": result.get("intent"),
+        "category": result.get("category"),
+        "risk": result.get("risk"),
+        "fraud_score": result.get("fraud_score", 0),
+        "sentiment": result.get("sentiment", "neutral"),
+    })
+
+    return result["final_answer"]
