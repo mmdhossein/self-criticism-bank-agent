@@ -1,10 +1,3 @@
-# LangGraph Banking Chatbot — README
-
-Here's a production-grade README for the project:
-
----
-
-````markdown
 # 🏦 LangGraph Banking Chatbot
 
 A production-grade, agentic banking assistant built with **LangGraph**, featuring
