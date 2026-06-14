@@ -25,7 +25,7 @@ multi-turn persistent memory, and automated quality control loops.
 
 ## Architecture
 
-```
+
 User Message
      │
      ▼
