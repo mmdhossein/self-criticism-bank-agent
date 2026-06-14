@@ -25,7 +25,7 @@ multi-turn persistent memory, and automated quality control loops.
 
 ## Architecture
 
-
+```
 User Message
      │
      ▼
@@ -88,6 +88,7 @@ User Message
     ┌──────────┐
     │ finalize │ ──► END
     └──────────┘
+```
 
 ---
 
@@ -121,7 +122,7 @@ User Message
 
 ## Project Structure
 
-
+```
 banking-chatbot/
 ├── app/
 │   ├── main.py                # FastAPI entrypoint
@@ -151,8 +152,8 @@ banking-chatbot/
 ├── .env                       # Environment variables
 ├── requirements.txt
 └── README.md
+```
 
----
 
 ## Installation
 
@@ -291,7 +292,7 @@ python -m app.rag.ingest --reset
 ---
 
 ## Graph Flow
-
+```
 | Step | Node | Routing Logic |
 |---|---|---|
 | 1 | `pii_redactor` | Always → `detect_intent_category` |
@@ -307,8 +308,8 @@ python -m app.rag.ingest --reset
 | 11 | `route_after_critic` | iterations < 3 & not ok → `improve` → `critic`, else → `finalize` |
 | 12 | `human_handoff` | Always → `END` |
 | 13 | `finalize` | Always → `END` |
+```
 
----
 
 ## API Reference
 
