@@ -134,7 +134,7 @@ User Message
 **1. Clone the repository**
 
 bash
-git clone https://github.com/your-org/banking-chatbot.git
+git clone https://github.com/mmdhossein/self-criticism-bank-agent.git
 cd banking-chatbot
 
 **2. Create and activate a virtual environment**
@@ -353,8 +353,3 @@ MIT License — see [LICENSE](LICENSE) for details.
 `
 
 ---
-
-**Notes:**
-- Replace `your-org` with your actual GitHub username/org
-- The `--reset` flag on `ingest.py` needs to be implemented to wipe and re-create the Chroma collection
-- Add a `Dockerfile` and `docker-compose.yml` if you want containerized deployment (let me know and I'll generate those too)
